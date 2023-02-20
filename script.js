@@ -1,53 +1,59 @@
-function simuladorDeIntereses(montoPrestamo, cantidadMeses) {
-    const tasaInteres = 0.08;
-    let montoTotal = montoPrestamo;
-    for (let i = 0; i < cantidadMeses; i++) {
-    montoTotal += montoTotal * tasaInteres;
-    }
-    return Math.ceil(montoTotal);
-}
-
-alert ("Simulador de prestamo JS")
-
-const nombres = [];
-let nombreIngresado = prompt("ingrese su nombre");
-nombres.push(nombreIngresado.toUpperCase());
-console.log(nombres);
-console.log(nombres.length);
-const apellido = prompt("Ingresa tu apellido:");
-
-function datosPrestamos() {
-    const sueldoMinimo = 100000;
-    const sueldo = parseFloat(prompt("Ingresa tu ingreso mensual:"));
-    if (sueldo >= sueldoMinimo) {
-    let calcularOtroPrestamo = true;
-    while (calcularOtroPrestamo) {
-        const montoPrestamo = parseFloat(
-        prompt("Ingresa el monto del préstamo:")
-        );
-        const cantidadMeses = parseInt(
-        prompt("Ingresa el número de meses de retraso(3-6-9-12):")
-        );
-        const montoTotal = simuladorDeIntereses(montoPrestamo, cantidadMeses);
-        alert(
-        `Hola ${nombres} ${apellido.toUpperCase()}, el monto total a pagar por el préstamo es de $ ${montoTotal}`
-        );
-        calcularOtroPrestamo = confirm("Desea realizar otra simulacion?");
-    }
-    } else {
-    alert(
-        `Lo sentimos ${nombres} ${apellido.toUpperCase()}, tu ingreso mensual es insuficiente para acceder al préstamo`
-    );
-    }
-}
-
-datosPrestamos();
-
-function Deudores (nombre,apellido,totalAdeudado){
+// Objeto Deudor // 
+function Deudor(nombre, apellido, totalAdeudado) {
     this.nombre = nombre;
     this.apellido = apellido;
     this.totalAdeudado = totalAdeudado;
-};
-
-const deudor1 = new Deudores (`${nombres}`,`${apellido}`, 123123);
-console.log(deudor1);
+  }
+  
+  // Array de deudores // 
+  const deudores = [];
+  
+  // Función para solicitar los datos del préstamo // 
+  function datosPrestamo() {
+    const sueldoMinimo = 100000;
+    const nombres = prompt("Ingresa tu nombre").toUpperCase();
+    const apellido = prompt("Ingresa tu apellido").toUpperCase();
+    const sueldo = parseFloat(prompt("Ingresa tu ingreso mensual"));
+  
+    if (sueldo < sueldoMinimo) {
+      alert(
+        `Lo sentimos ${nombres} ${apellido}, tu ingreso mensual es insuficiente para acceder al préstamo`
+      );
+      return;
+    }
+  
+    let calcularOtroPrestamo = true;
+    while (calcularOtroPrestamo) {
+      const montoPrestamo = parseFloat(prompt("Ingresa el monto del préstamo"));
+      const cantidadMeses = parseInt(
+        prompt("Ingresa el número de meses de retraso (3-6-9-12)")
+      );
+      const montoTotal = simuladorDeIntereses(montoPrestamo, cantidadMeses);
+  
+      const deudor = new Deudor(nombres, apellido, montoTotal);
+      deudores.push(deudor);
+  
+      alert(
+        `Hola ${nombres} ${apellido}, el monto total a pagar por el préstamo es de $${montoTotal}`
+      );
+  
+      calcularOtroPrestamo = confirm("Desea realizar otra simulacion?");
+    }
+    const ultimoDeudor = deudores[deudores.length - 1];
+    console.log(`El último deudor agregado es: ${ultimoDeudor.nombre} ${ultimoDeudor.apellido} con un total adeudado de $${ultimoDeudor.totalAdeudado}`); // Solo el ultimo deudor 
+    console.log(deudores); // Array de deudores (almacena cada simulacion de prestamo.)
+  }
+  
+  // Función para simular los intereses del préstamo // 
+  function simuladorDeIntereses(montoPrestamo, cantidadMeses) {
+    const tasaInteres = 0.08;
+    let montoTotal = montoPrestamo;
+  
+    for (let i = 0; i < cantidadMeses; i++) {
+      montoTotal += montoTotal * tasaInteres;
+    }
+  
+    return Math.ceil(montoTotal);
+  }
+  
+  datosPrestamo();
