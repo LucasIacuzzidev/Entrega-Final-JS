@@ -39,6 +39,8 @@ function Deudor(nombre, apellido, totalAdeudado) {
   
       calcularOtroPrestamo = confirm("Desea realizar otra simulacion?");
     }
+    const montosAdeudados = deudores.map((deudor) => deudor.totalAdeudado);
+    console.log("Montos adeudados:", montosAdeudados);
     const ultimoDeudor = deudores[deudores.length - 1];
     console.log(`El último deudor agregado es: ${ultimoDeudor.nombre} ${ultimoDeudor.apellido} con un total adeudado de $${ultimoDeudor.totalAdeudado}`); // Solo el ultimo deudor 
     console.log(deudores); // Array de deudores (almacena cada simulacion de prestamo.)
