@@ -1,0 +1,16 @@
+.dark{
+            background-color: black;
+            color: white;
+        }
+
+.datosPrestamo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    padding: 1rem;
+}
+.datosPrestamo button{
+    margin: 0.5rem;
+}
