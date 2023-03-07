@@ -22,14 +22,6 @@ body{
     width: 4rem;
 }
 
-#montoPrestamoForm{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+#datosPrestamo label{
+    margin: 0.3rem;
 }
-
-#montoPrestamoForm button{
-    margin: 0.5rem;
-}
-
