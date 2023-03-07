@@ -1,5 +1,5 @@
 .dark{
-            background-color: black;
+            background-color: rgb(22, 21, 21);
             color: white;
         }
 
@@ -12,5 +12,16 @@
     padding: 1rem;
 }
 #datosPrestamo button{
+    margin: 0.5rem;
+}
+
+#montoPrestamoForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#montoPrestamoForm button{
     margin: 0.5rem;
 }
