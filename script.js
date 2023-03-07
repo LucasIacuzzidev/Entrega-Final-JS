@@ -7,10 +7,7 @@ function Deudor(nombre, apellido, totalAdeudado) {
 
 // Array de deudores // 
 const deudores = [];
-const deudoresJSON = JSON.stringify(deudores);
-localStorage.setItem("deudores",deudoresJSON);
-const deudoresJSON = localStorage.getItem("deudores");
-const deudores = JSON.parse(deudoresJSON);
+
 // Función para solicitar los datos del préstamo // 
 const datosPrestamoForm = document.getElementById("datosPrestamo");
 function datosPrestamo() {
