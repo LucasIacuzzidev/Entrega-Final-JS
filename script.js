@@ -9,11 +9,12 @@ function Deudor(nombre, apellido, totalAdeudado) {
   const deudores = [];
   
   // Función para solicitar los datos del préstamo // 
+  const datosPrestamoForm = document.getElementById("datosPrestamo");
   function datosPrestamo() {
     const sueldoMinimo = 100000;
-    const nombres = prompt("Ingresa tu nombre").toUpperCase();
-    const apellido = prompt("Ingresa tu apellido").toUpperCase();
-    const sueldo = parseFloat(prompt("Ingresa tu ingreso mensual"));
+    const nombres = document.getElementById("name").value;
+    const apellido = document.getElementById("lastName").value;
+    const sueldo = parseFloat(document.getElementById("income").value);
   
     if (sueldo < sueldoMinimo) {
       alert(
@@ -58,7 +59,7 @@ function Deudor(nombre, apellido, totalAdeudado) {
   }
   
   // Modo Dark-Light 
-  const botonFondo = document.getElementById("botonFondo");
+const botonFondo = document.getElementById("botonFondo");
 
 botonFondo.addEventListener("click", ()=>{
     document.body.classList.toggle("dark");

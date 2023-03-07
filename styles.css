@@ -3,7 +3,7 @@
             color: white;
         }
 
-.datosPrestamo{
+#datosPrestamo{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,6 +11,6 @@
     margin: 1rem;
     padding: 1rem;
 }
-.datosPrestamo button{
+#datosPrestamo button{
     margin: 0.5rem;
 }
