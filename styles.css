@@ -2,7 +2,12 @@
             background-color: rgb(22, 21, 21);
             color: white;
         }
-
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 #datosPrestamo{
     display: flex;
     flex-direction: column;
@@ -13,6 +18,8 @@
 }
 #datosPrestamo button{
     margin: 0.5rem;
+    height: 2rem;
+    width: 4rem;
 }
 
 #montoPrestamoForm{
@@ -25,3 +32,4 @@
 #montoPrestamoForm button{
     margin: 0.5rem;
 }
+

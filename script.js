@@ -7,7 +7,10 @@ function Deudor(nombre, apellido, totalAdeudado) {
 
 // Array de deudores // 
 const deudores = [];
-
+const deudoresJSON = JSON.stringify(deudores);
+localStorage.setItem("deudores",deudoresJSON);
+const deudoresJSON = localStorage.getItem("deudores");
+const deudores = JSON.parse(deudoresJSON);
 // Función para solicitar los datos del préstamo // 
 const datosPrestamoForm = document.getElementById("datosPrestamo");
 function datosPrestamo() {
@@ -23,14 +26,17 @@ function datosPrestamo() {
     const deudor = new Deudor(nombres, apellido, montoTotal);
     deudores.push(deudor)
     if (sueldo < sueldoMinimo) {
+      datosPrestamoForm.reset();
       let noCalifica = document.createElement("p");
       noCalifica.innerHTML = "<p>Lo sentimos no tenemos un prestamo para ofrecerte</p>";
+      noCalifica.style.textAlign = "center";
       document.body.append(noCalifica);
       return;
     }
 
     let montoPagar = document.createElement("p");
     montoPagar.innerHTML = `<p>Hola ${nombres} ${apellido}, el monto total a pagar es de $ ${montoTotal}<p>`
+    montoPagar.style.textAlign = "center";
     document.body.append(montoPagar);
 
     const montosAdeudados = deudores.map((deudor) => deudor.totalAdeudado);
