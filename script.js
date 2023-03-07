@@ -23,24 +23,23 @@ function datosPrestamo() {
     const deudor = new Deudor(nombres, apellido, montoTotal);
     deudores.push(deudor)
     if (sueldo < sueldoMinimo) {
-      alert(
-        `Lo sentimos ${nombres} ${apellido}, tu ingreso mensual es insuficiente para acceder al préstamo`
-      );
+      let noCalifica = document.createElement("p");
+      noCalifica.innerHTML = "<p>Lo sentimos no tenemos un prestamo para ofrecerte</p>";
+      document.body.append(noCalifica);
       return;
     }
-    alert(
-      `Hola ${nombres} ${apellido}, el monto total a pagar por el préstamo es de $${montoTotal}`
-    );
-    const calcularOtroPrestamo = confirm("Desea realizar otra simulacion?");
-    if (!calcularOtroPrestamo) {
-      const montosAdeudados = deudores.map((deudor) => deudor.totalAdeudado);
+
+    let montoPagar = document.createElement("p");
+    montoPagar.innerHTML = `<p>Hola ${nombres} ${apellido}, el monto total a pagar es de $ ${montoTotal}<p>`
+    document.body.append(montoPagar);
+
+    const montosAdeudados = deudores.map((deudor) => deudor.totalAdeudado);
       const montosDeudasGrandes = deudores.filter((deudor) => deudor.totalAdeudado > 50000);
       console.log("Montos adeudados:", montosAdeudados);
       console.log("Montos de deudas mayores a 50000:", montosDeudasGrandes);
       const ultimoDeudor = deudores[deudores.length - 1];
       console.log(`El último deudor agregado es: ${ultimoDeudor.nombre} ${ultimoDeudor.apellido} con un total adeudado de $${ultimoDeudor.totalAdeudado}`); // Solo el ultimo deudor 
       console.log(deudores); // Array de deudores (almacena cada simulacion de prestamo.)
-    }
     datosPrestamoForm.reset();
   });
 }
