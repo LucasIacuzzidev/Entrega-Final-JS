@@ -32,7 +32,7 @@ function datosPrestamo() {
     }
 
     let montoPagar = document.createElement("p");
-    montoPagar.innerHTML = `<p>Hola ${nombres} ${apellido}, el monto total a pagar es de $ ${montoTotal}<p>`
+    montoPagar.innerHTML = montoPagar.innerHTML = `<p>Hola ${nombres} ${apellido}, el monto total a pagar es de $ ${simuladorDeIntereses(montoPrestamo, cantidadMeses).montoTotal} en ${cantidadMeses} cuotas de $ ${simuladorDeIntereses(montoPrestamo, cantidadMeses).valorCuota} cada una.</p>`;
     montoPagar.style.textAlign = "center";
     document.body.append(montoPagar);
 
@@ -56,7 +56,9 @@ function simuladorDeIntereses(montoPrestamo, cantidadMeses) {
     montoTotal += montoTotal * tasaInteres;
   }
 
-  return Math.ceil(montoTotal);
+  const valorCuota = Math.ceil(montoTotal / cantidadMeses);
+
+  return { montoTotal: Math.ceil(montoTotal), valorCuota };
 }
 
 // Modo Dark-Light 
