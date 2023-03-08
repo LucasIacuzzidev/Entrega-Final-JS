@@ -10,6 +10,7 @@ const deudores = [];
 
 // Función para solicitar los datos del préstamo // 
 const datosPrestamoForm = document.getElementById("datosPrestamo");
+
 function datosPrestamo() {
   const sueldoMinimo = 100000;
   datosPrestamoForm.addEventListener("submit", (e) => {
@@ -22,6 +23,7 @@ function datosPrestamo() {
     const montoTotal = simuladorDeIntereses(montoPrestamo, cantidadMeses);
     const deudor = new Deudor(nombres, apellido, montoTotal);
     deudores.push(deudor)
+
     if (sueldo < sueldoMinimo) {
       datosPrestamoForm.reset();
       let noCalifica = document.createElement("p");
@@ -32,8 +34,8 @@ function datosPrestamo() {
     }
 
     let montoPagar = document.createElement("p");
-    montoPagar.innerHTML = montoPagar.innerHTML = `<p>Hola ${nombres} ${apellido}, el monto total a pagar es de $ ${simuladorDeIntereses(montoPrestamo, cantidadMeses).montoTotal} en ${cantidadMeses} cuotas de $ ${simuladorDeIntereses(montoPrestamo, cantidadMeses).valorCuota} cada una.</p>`;
-    montoPagar.style.textAlign = "center";
+    const resultado = simuladorDeIntereses(montoPrestamo, cantidadMeses);
+    montoPagar.innerHTML = `Hola ${nombres} ${apellido}, el monto total a pagar es de $ ${resultado.montoTotal} en ${cantidadMeses} cuotas de $ ${resultado.valorCuota} cada una.`;    montoPagar.style.textAlign = "center";
     document.body.append(montoPagar);
 
     const montosAdeudados = deudores.map((deudor) => deudor.totalAdeudado);
