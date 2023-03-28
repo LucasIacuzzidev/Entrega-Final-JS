@@ -1,5 +1,5 @@
 Swal.fire({
-  icon: 'succes',
+  icon: 'info',
   title: 'Simulador de prestamos personales',
   text: 'Coderhouse  Comisión 48665 ',
   footer: '<a href="https://github.com/IacuzziDev/preEntrega3JS">Repositorio de gitHub</a>'
@@ -90,6 +90,36 @@ if (modo === "dark"){
 }else{
   document.body.classList.remove("dark");
 };
+
+// Solicito precio del Dolar a una api 
+
+const btnMostrarDolar = document.getElementById("btnMostrarDolar");
+
+btnMostrarDolar.addEventListener("click", function() {
+  const apiDolarDiv = document.getElementById("apiDolarDiv");
+
+const myHeaders = new Headers();
+myHeaders.append("apikey", "W8cxMLy0feP0ih2ulpognCIeEaF0TAZ3");
+
+let requestOptions = {
+  method: 'GET',
+  redirect: 'follow',
+  headers: myHeaders
+};
+
+function mostrarDolarOficial() {
+  fetch("https://api.apilayer.com/fixer/convert?to=ars&from=usd&amount=1", requestOptions)
+    .then(response => response.json())
+    .then(result => {
+      const dolarOficial = parseFloat(result.result.toFixed(2));
+      apiDolarDiv.innerHTML = `<p>Dolar Oficial: $${dolarOficial}</p>`;
+    })
+    .catch(error => console.log('error', error)); 
+}
+
+btnMostrarDolar.addEventListener("click", mostrarDolarOficial);
+
+});
 
 
 datosPrestamo(); 
