@@ -1,3 +1,10 @@
+Swal.fire({
+  icon: 'succes',
+  title: 'Simulador de prestamos personales',
+  text: 'Coderhouse  Comisión 48665 ',
+  footer: '<a href="https://github.com/IacuzziDev/preEntrega3JS">Repositorio de gitHub</a>'
+})
+
 // Objeto Deudor // 
 function Deudor(nombre, apellido, totalAdeudado) {
   this.nombre = nombre;
